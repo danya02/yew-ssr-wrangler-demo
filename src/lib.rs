@@ -36,9 +36,6 @@ async fn main(req: Request, _env: Env, _ctx: Context) -> worker::Result<Response
     }
 
     let url = url.path().to_string();
-    unsafe {
-        console_warn!("{url}");
-    }
 
     let renderer =
         yew::ServerRenderer::<yew_app::ServerApp>::with_props(move || yew_app::ServerAppProps {
@@ -52,10 +49,8 @@ async fn main(req: Request, _env: Env, _ctx: Context) -> worker::Result<Response
     before.push_str("<body>");
     let after = after.to_string();
 
-    let mid = renderer.render().await;
-
     let stream = tokio_stream::once(before)
-        .chain(tokio_stream::once(mid))
+        .chain(renderer.render_stream())
         .chain(tokio_stream::once(after))
         .map(Result::Ok);
 

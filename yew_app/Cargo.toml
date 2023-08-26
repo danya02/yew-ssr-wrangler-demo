@@ -9,3 +9,12 @@ edition = "2021"
 yew = "0.20.0"
 yew-router = "0.17.0"
 log = "0.4.20"
+worker = { version = "0.0.18", optional = true }
+gloo = { version = "0.10.0", optional = true }
+serde = { version = "1.0.188", features = ["derive"] }
+serde_json = "1.0.105"
+
+
+[features]
+ssr = ["dep:worker"]
+csr = ["dep:gloo"]
