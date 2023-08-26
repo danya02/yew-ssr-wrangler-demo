@@ -1,0 +1,4 @@
+[build]
+target = "client_package/index.html"
+release = true
+filehash = false

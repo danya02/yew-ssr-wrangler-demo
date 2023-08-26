@@ -1,3 +1,10 @@
+[workspace]
+members = [
+    ".",
+    "yew_app",
+    "client_package",
+]
+
 [package]
 name = "yew-ssr-wrangler-demo"
 version = "0.1.0"
@@ -11,8 +18,11 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-hyper = { version="0.14", default-features=false, features=['http1', 'client'] }
-tokio = { version = "1.0", default-features=false, features=['io-util', 'macros']}
+tokio = { version = "1.0", default-features = false, features = ["io-util", "macros"] }
 console_error_panic_hook = { version = "0.1.1" }
 wasm-bindgen-futures = "0.4"
 worker = "0.0.18"
+
+yew = { version = "0.20.0", features = ["ssr"] }
+yew_app = { path = "yew_app" }
+tokio-stream = "0.1.14"
