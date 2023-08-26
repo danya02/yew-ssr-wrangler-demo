@@ -160,6 +160,7 @@ fn Counter() -> Html {
 
 fn switch(routes: Route) -> Html {
     html!(<div>
+            <p>{"This is a demo of using Yew's server-side rendering with "}<a href="https://workers.cloudflare.com/">{"Cloudflare Workers"}</a>{". View the source code "}<a href="https://github.com/danya02/yew-ssr-wrangler-demo">{"on GitHub"}</a>{"."}</p>
             <p>{"You are currently viewing route: "}<code>{format!("{routes:?}")}</code>{" (try /, /page1, /page2, /page3, /404)"}</p>
             <p>{"When server was preparing this page, it had IP address: "}<ServerIp /></p>
             <p>{"When your browser is displaying this page, it has IP address: "}<ClientIp /></p>
